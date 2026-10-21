@@ -1,5 +1,6 @@
 // src/services/orderService.js
 import api from './api';
+import { buildOrderStatusUpdate } from '../utils/orderStatus.js';
 
 /**
  * Order Service
@@ -38,7 +39,10 @@ export const orderService = {
 
   /** Update order status */
   updateOrderStatus: (orderId, status, paymentStatus = null) =>
-    api.patch(`/orders/${orderId}/status`, { status, paymentStatus }).then(r => r.data),
+    api.patch(
+      `/orders/${orderId}/status`,
+      buildOrderStatusUpdate(status, paymentStatus),
+    ).then(r => r.data),
 
   /** Dashboard stats */
   getOrderStats: (params = {}) =>
