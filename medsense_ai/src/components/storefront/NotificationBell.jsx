@@ -28,6 +28,10 @@ import {
   getRefillReminders,
 } from '../../services/storefrontRefillService';
 
+import {
+  prioritizeNotifications,
+} from '../../utils/safetyNotifications.js';
+
 const iconMap = {
   high:
     CircleAlert,
@@ -269,10 +273,12 @@ export default function NotificationBell() {
         }
 
         if (active) {
-          setNotifications([
-            ...refillNotifications,
-            ...orderNotifications,
-          ]);
+          setNotifications(
+            prioritizeNotifications([
+              ...refillNotifications,
+              ...orderNotifications,
+            ])
+          );
         }
       }
 
