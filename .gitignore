@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+coverage/
+*.log
+runtime-logs/
+service_logs/
+portable/
+*.backup
+*.sqlite
+*.sqlite3
+*.db
+*.bak
