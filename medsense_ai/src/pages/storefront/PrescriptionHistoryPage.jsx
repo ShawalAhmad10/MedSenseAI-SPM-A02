@@ -27,6 +27,10 @@ import {
 } from '../../services/storefrontRecommendationService';
 
 import {
+  sortMedicationHistory,
+} from '../../utils/medicationHistory.js';
+
+import {
   useAuth,
 } from '../../context/AuthContext';
 
@@ -127,7 +131,9 @@ export default function PrescriptionHistoryPage() {
           (rows) => {
             if (active) {
               setPrescriptions(
-                rows
+                sortMedicationHistory(
+                  rows
+                )
               );
             }
           }
